@@ -1,0 +1,6 @@
+ONDE SE LÊ :
+As instâncias de WeatherInfo são objectos função: sem estado e o seu método é idempotente
+
+DEVERIA ESTAR :
+As instâncias de WeatherPredicate são objectos função: sem estado e o seu método é idempotente.
+Ou  seja, a função quando chamada com os mesmos parâmetros devolve sempre o mesmo resultado.
