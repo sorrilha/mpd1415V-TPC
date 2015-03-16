@@ -14,26 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pt.isel.mpd.weathergw.test;
-
-import java.io.IOException;
-import junit.framework.Assert;
-import junit.framework.TestCase;
-import pt.isel.mpd.util.FileParser;
+package pt.isel.mpd.weathergw;
 
 /**
  *
  * @author Miguel Gamboa at CCISEL
  */
-public class FileParserTest extends TestCase{
-    
-    public void test_read_all_lines_from_resource_weather_data() throws IOException {
-        Iterable<String> lines = 
-                FileParser.parseResourceAsIterable("data/weather-lisbon-history.csv");
-        int count = 0;
-        for (String line : lines) {
-            count++;
-        }
-        Assert.assertEquals(72, count);
-    }
+public interface WeatherPredicate {
+
+    public boolean test(WeatherInfo w);
 }

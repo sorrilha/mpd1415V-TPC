@@ -24,7 +24,7 @@ import java.util.Date;
  *
  * @author Miguel Gamboa at CCISEL
  */
-public class LocalInfo {
+public class WeatherInfo {
     
     private static final SimpleDateFormat dateParser = 
             new SimpleDateFormat("yyyy-MM-dd");
@@ -35,7 +35,7 @@ public class LocalInfo {
     public final double  precipMM; // index 11;
     public final int feelsLikeC; // index 24;
 
-    public LocalInfo(Date date, int tempC, String weatherDesc, double precipMM, int feelsLikeC) {
+    public WeatherInfo(Date date, int tempC, String weatherDesc, double precipMM, int feelsLikeC) {
         this.date = date;
         this.tempC = tempC;
         this.weatherDesc = weatherDesc;
@@ -53,9 +53,9 @@ public class LocalInfo {
      * Hourly information follows below the day according to the format of 
      * /past-weather resource of the World Weather Online API
      */
-    public static LocalInfo valueOf(String input) throws ParseException{
+    public static WeatherInfo valueOf(String input) throws ParseException{
         String[] data = input.split(",");
-        return new LocalInfo(
+        return new WeatherInfo(
                 dateParser.parse(data[0]), 
                 Integer.parseInt(data[2]),
                 data[10],

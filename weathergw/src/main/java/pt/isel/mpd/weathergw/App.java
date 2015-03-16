@@ -16,11 +16,80 @@
  */
 package pt.isel.mpd.weathergw;
 
-/**
- *
- * @author Miguel Gamboa at CCISEL
- */
+import java.text.ParseException;
+import java.util.List;
+
+
+interface Predicate<T> {
+
+    boolean get(T arg);
+}
+
+interface Supplier<T> {
+
+    T get();
+}
+
+interface Runnable {
+
+    void run();
+}
+
 public class App {
-    public static void main(String [] args){
+
+    public static <T> T fetch(Supplier<T> s) {
+        return s.get();
     }
+
+    public static String fetchString(Supplier<String> s) {
+        return s.get();
+    }
+
+    public static void execute(Runnable r) {
+        r.run();
+    }
+
+    public static Supplier<Integer> getter() {
+        return () -> {
+            return 5;
+        };
+    }//Faltavam só uns ';'
+
+    public static void main(String[] args) {
+    /* ------------------   TPC 03 -----------------  
+        1	() -> {}
+		Statement vazio, é obrigatório haver um return quando fazemos um bloco de instruções. 
+	
+	2	(Integer i) -> return "Ramirez" + i;
+ 		Tipo de retorno incompativel (o return embora não cause erro não é necessário, está implícito).
+	
+        3	() -> "Ze Manel"
+	Está ok. Falta apenas o ‘ ; ’
+    
+	4	(String s) -> {"Godzilla";}
+	Falta o return dentro do bloco.
+
+	5	() -> {return "Josefina";}
+	Está ok.
+
+    */  
+        
+    /* ------------------   TPC 04 -----------------*/
+        //Funciona;
+        System.out.println(fetchString(() -> {
+            return "Ola";
+        })); // Passagem de Lambda por parametro
+
+    //Não consigo corrigir este;
+        //System.out.println(execute(() -> {})); // Passagem de Lambda por parametro
+        
+    //Um predicado deveria devolver apenas boolean, int é incompativel. ;
+        Predicate<WeatherInfo> evalTempC = (WeatherInfo w) -> w.tempC; // afectacao de Lambda a variavel
+        Predicate<WeatherInfo> evalTemp = (WeatherInfo w) -> true;
+
+    // Falta chamar o método get
+        assert getter().equals(5) : "Getter not evaluating to 5 number"; // Lambda como retorno do metodo
+        assert getter().get().equals(5) : "Getter not evaluating to 5 number"; // Lambda como retorno do metodo
+    }
+
 }
