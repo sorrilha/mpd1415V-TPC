@@ -29,13 +29,15 @@ public class CityLazy {
     
     private final String cityName;
     private Supplier<List<WeatherInfo>> history;
-    public static final  List<List<WeatherInfo>> wi = new LinkedList<>();
+    public static final  List<WeatherParser> wp = new LinkedList<>();
     
     public CityLazy(String cityName){
+        
         this.cityName = cityName;
         this.history = () ->{
-            List<WeatherInfo> tmp =  WeatherParser.parseWeather();
-            wi.add(tmp);
+            WeatherParser w = new WeatherParser();
+            List<WeatherInfo> tmp =  w.parseWeather();
+            wp.add(w);
             history = () -> tmp;
             return tmp;
         };

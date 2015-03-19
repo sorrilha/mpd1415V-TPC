@@ -41,6 +41,6 @@ public class TestCityLazyInit extends TestCase{
         CityLazy c = new CityLazy("Lisbon");
         assertEquals(32, c.getWeatherHistory().size());
         assertEquals(32, c.getWeatherHistory().size());
-        assertEquals(1, c.wi.size());
+        assertEquals(1, c.wp.size());
     }
 }
