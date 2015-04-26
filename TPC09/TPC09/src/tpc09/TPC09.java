@@ -25,15 +25,16 @@ public class TPC09 {
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
-        
+
         Function<String, Double> ratesFn2 = formap(rates).myDefault(0.0);
         australianRate = ratesFn2.apply("AUD");
-            System.out.println("australianRate "+australianRate);
+        System.out.println("australianRate " + australianRate);
         double canadianRate = ratesFn2.apply("CAD");
-            System.out.println("canadianRate "+canadianRate);
-               
+        System.out.println("canadianRate " + canadianRate);
+
     }
-     public static <K, V> Funcs formap(Map<K, V> map) {
+
+    public static <K, V> Funcs formap(Map<K, V> map) {
         return new Funcs<>(
                 (K arg) -> {
                     V v = map.get(arg);
