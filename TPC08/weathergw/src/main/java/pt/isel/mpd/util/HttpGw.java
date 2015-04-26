@@ -17,7 +17,7 @@ import org.apache.http.impl.client.HttpClients;
  *
  * @author Sorrilha (a37331)
  */
-public final class HttpGw {
+public  class HttpGw {
 
     private String URI;
     private HttpEntity entity;
@@ -27,7 +27,6 @@ public final class HttpGw {
     
     public HttpGw(String URI) {
         this.URI = URI;
-      //  try(CloseableHttpClient httpclient = HttpClients.createDefault()){
             /*
             * Method: HttpGet
             */
@@ -42,7 +41,7 @@ public final class HttpGw {
                 stream = entity.getContent();
                 
             } 
-       // }
+      
        catch(IOException e){
            disposeStreams();
            throw new RuntimeException(e);

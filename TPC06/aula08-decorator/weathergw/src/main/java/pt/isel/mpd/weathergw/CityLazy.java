@@ -43,7 +43,6 @@ public class CityLazy {
         };
     }
     
-    
     public CityLazy(String cityName){
         
         this.cityName = cityName;
@@ -58,5 +57,4 @@ public class CityLazy {
     {
         return ip;
     }
-    
 }
